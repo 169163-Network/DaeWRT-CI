@@ -80,6 +80,7 @@ UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 UPDATE_PACKAGE "luci-app-daed" "QiuSimons/luci-app-daed" "kix"
 UPDATE_PACKAGE "luci-app-pushbot" "zzsj0928/luci-app-pushbot" "master"
 UPDATE_PACKAGE "luci-app-lucky" "sirpdboy/luci-app-lucky" "main"
+UPDATE_PACKAGE "luci-app-nginx-manager" "hello-yunshu/luci-app-nginx-manager" "main"
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
