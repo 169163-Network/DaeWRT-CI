@@ -192,6 +192,14 @@ jobs:
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
 
+      - name: Change lanspeedd rustc version check
+        run: |
+          cd ./wrt/
+          sed -i 's/"1\.94\.0"/"1.96.0"/g' \
+            package/luci-app-lanspeed/net/lanspeedd/rust/crates/lanspeed-build/src/lib.rs
+          grep -n "EXPECTED_RUSTC" \
+            package/luci-app-lanspeed/net/lanspeedd/rust/crates/lanspeed-build/src/lib.rs
+
       - name: Download Packages
         if: env.WRT_TEST != 'true'
         run: |
