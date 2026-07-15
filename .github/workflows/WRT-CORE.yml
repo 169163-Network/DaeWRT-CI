@@ -172,11 +172,12 @@ jobs:
           cd ./wrt/
 
           ./scripts/feeds update -a
-
+          
           cd feeds/packages
+          git fetch origin ff826adfa8a3d8545f8589b0949cae0de55efc02
           git checkout ff826adfa8a3d8545f8589b0949cae0de55efc02 -- lang/rust
           cd ../..
-          
+
           ./scripts/feeds install -a
 
       - name: Custom Packages
