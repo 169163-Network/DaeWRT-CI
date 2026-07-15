@@ -172,6 +172,11 @@ jobs:
           cd ./wrt/
 
           ./scripts/feeds update -a
+
+          cd feeds/packages
+          git checkout ff826adfa8a3d8545f8589b0949cae0de55efc02 -- lang/rust
+          cd ../..
+          
           ./scripts/feeds install -a
 
       - name: Custom Packages
@@ -191,14 +196,6 @@ jobs:
           $GITHUB_WORKSPACE/Scripts/Settings.sh
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
-
-      - name: Change lanspeedd rustc version check
-        run: |
-          cd ./wrt/
-          sed -i 's/"1\.94\.0"/"1.96.0"/g' \
-            package/luci-app-lanspeed/net/lanspeedd/rust/crates/lanspeed-build/src/lib.rs
-          grep -n "EXPECTED_RUSTC" \
-            package/luci-app-lanspeed/net/lanspeedd/rust/crates/lanspeed-build/src/lib.rs
 
       - name: Download Packages
         if: env.WRT_TEST != 'true'
